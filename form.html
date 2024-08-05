@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            background-color: #f0f0f0; /* Light gray background color */
+            background-image: url("indexbg.jpg");
+            background-repeat: no-repeat;
+            background-size: 180%;
+            font-family: Ubuntu;
+        }
+        
+        .avtar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            /* position: absolute; */
+            top: -10%;
+            left: calc(50% - 50px);
+        }
+        .center_avtar{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom:25px ;
+        }
+        .loginbox {
+            width: 400px;
+            /* height: auto; */
+            background: white;
+            color: #000;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            padding-top: 200px;
+            transform: translate(-50%, -50%);
+            box-sizing: border-box;
+            padding: 70px 30px;
+            /* margin-bottom: 50px; */
+            border-radius: 8px;
+        }
+        h1 {
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+           font-size: 40px;
+        }
+        .loginbox p {
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+        }
+        .loginbox input{
+            width: 100%;
+            margin-bottom: 20px;
+            border: none;
+            background: none;
+            font-size: 16px;
+        }
+        .loginbox input[type="text"], .loginbox input[type="password"], .loginbox textarea {
+            border-bottom: 1px solid #000;
+            height: 40px;
+            color: #000;
+        }
+        .loginbox input[type="submit"] {
+            outline: none;
+            height: 40px;
+            background: #000;
+            color: white;
+            font-size: 18px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .loginbox input[type="submit"]:hover {
+            background: blue;
+        }
+        .loginbox input[type="reser"]{
+            background:gray;
+        }
+        #container{
+        
+            position: relative;
+            top:600px;
+          
+        }
+     
+        #chk1{
+            position: relative;
+            left:30px;
+        }
+        #chk{
+            position: relative;
+            right:160px;
+            top:35px;
+        }
+       
+        footer {
+            width: 100vw;
+
+            margin-top: 80%;
+    background-color: #faca45c8;
+    color: #100f0f;
+    padding: 20px 0;
+    position: relative;
+    top:200px;
+  }
+  
+  .footer {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+
+  }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; color: orange;" >REGISTRATION FORM FOR SPORTS TRAINING</h1>
+
+    <div id="container">
+        <div class="loginbox">
+            <div class="center_avtar">
+                <img src="https://cdn3.iconfinder.com/data/icons/essential-rounded/64/Rounded-31-512.png" class="avtar">
+            </div>
+
+          
+            <h1 style="font-size: 30px;">Registration Here</h1>
+            <p>FirsName:</p><br>
+            <input type="text" placeholder="enter your name here" id="fname"> <br><br>
+            <p>LastName:</p><br>
+            <input type="text" placeholder="enter your last name" id="lname"> <br><br>
+            <p>DOB:</p><br>
+            <input type="date" name="date" id="date"><br><br>
+            <p>Adress:</p><br>
+            <textarea name="add" id="add" cols="40" rows="10"></textarea><br><br>
+            <p>Select Your Game:</p><br>
+            <select name="" id="">
+                <option value="cricket">Cricket</option>
+                <option value="swimming">Swimming</option>
+                <option value="basketball">Basketball</option>
+                <option value="football">Football</option>
+                <option value="badminton">Badminton</option>
+                <option value="hockey">Hockey</option>
+                <option value="lawn tennis">Lawn Tennis</option>
+                <option value="kabbadi">Kabbadi</option>
+                <option value="boxing">Boxing</option>
+
+            </select><br><br><br>
+            <p>Mobile Number:</p>
+            <input type="text" id="mobileNumber" placeholder="enter your mobile number here"><br>
+            <input type="checkbox" id="chk">
+            <p id="chk1">I will Accept Privacy & Policy!!</p><br><br>
+            <input type="submit" onclick="demo()">
+            <input type="reset"> 
+
+
+
+        </div>
+    </div>
+
+    
+    
+    <script>
+        let btn = document.getElementById("btn");
+        btn.addEventListener('click', demo);
+
+        function demo() {
+            let fname = document.getElementById('fname').value;
+            let lname = document.getElementById('lname').value;
+            let mobileNumber = document.getElementById("mobileNumber").value;
+            let add = document.getElementById("add").value.trim();
+            let date = document.getElementById("date").value.trim();
+
+            if (fname === "" || lname === "" || mobileNumber === "" || add === "" || date === "") {
+                alert("You can't submit form without details!!");
+                return false;
+            }
+
+            if (!document.getElementById("chk").checked) {
+                alert("Accept terms and conditions are required!!");
+                return;
+            }
+
+            let nameRegex = /^[A-Za-z\s]+$/;
+            if (!nameRegex.test(fname) || !nameRegex.test(lname)) {
+                alert("Please enter a valid name!!");
+                return;
+            }
+
+            let phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(mobileNumber)) {
+                alert("Please enter a valid mobile number!!");
+                return;
+            }
+
+            alert("YOUR FORM IS SUBMITTED & WE WILL CONTACT YOU AS SOON AS POSSIBLE!!");
+        }
+    </script>
+</body>
+</html>
